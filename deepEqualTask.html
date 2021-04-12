@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+    <title>
+
+    </title>
+
+<script>
+    // test cases checking
+    var maindict = {key1: {key2: "value1"}, object: 2};
+    console.log(deepEqual(maindict, maindict));
+    
+    console.log(deepEqual(maindict, {key1: 1, object: 2}));
+
+    // our main function
+    function deepEqual(s1,s2)
+    {
+        if(s1===s2)
+        {
+            return true;
+        } 
+        if(s1===null)
+        {
+            return false;
+        }
+        if(typeof s1 != "object")
+        {
+            return false;
+        }
+        if(s2===null)
+        {
+            return false;
+        }
+        if(typeof s2 != "object")
+        {
+            return false;
+        }
+       
+        let lens1 = 0;
+        let lens2 = 0;
+
+        for(var val in s1)
+        {
+            lens1=lens1+1;
+        }
+        console.log(lens1);
+        for(var val in s2)
+        {
+            lens2=lens2+1;
+
+            if(!(val in s1) || !(deepEqual( s1[val], s2[val])))
+            {
+                return false;
+            }
+        }
+        return propss1 === propss2;
+    }
+</script>
+</head>
+
+
+
